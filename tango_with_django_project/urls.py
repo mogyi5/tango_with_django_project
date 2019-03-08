@@ -16,6 +16,8 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from rango import views
+from django.core.urlresolvers import reverse
+
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -24,7 +26,7 @@ from registration.backends.simple.views import RegistrationView
 
 class MyRegistrationView(RegistrationView):
     def get_success_url(self, user):
-        return '/rango/'
+        return reverse('register_profile')
 
 urlpatterns = [
 	url(r'^$', views.index, name='index'),
